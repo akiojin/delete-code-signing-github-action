@@ -8,9 +8,9 @@ inputs:
       Possible options are:
       Development, Distribution
     required: true
-  creator:
+  publisher:
     description: >
-      Specifies the creator of the certificate.
+      Specifies the publisher of the certificate.
     required: true
 runs:
   using: 'node16'

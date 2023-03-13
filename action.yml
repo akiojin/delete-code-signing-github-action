@@ -1,0 +1,20 @@
+name: 'Remove installed certificates'
+description: 'This action removes installed certificates.'
+inputs:
+  type:
+    description: >
+      Specify the type of certificate.
+
+      Possible options are:
+      Development, Distribution
+    required: true
+  creator:
+    description: >
+      Specifies the creator of the certificate.
+    required: true
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
+branding:
+  icon: "box"
+  color: "orange"

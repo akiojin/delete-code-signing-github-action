@@ -4620,7 +4620,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(508));
+const os = __importStar(__nccwpck_require__(37));
 const keychain_1 = __nccwpck_require__(638);
+const IsMacOS = os.platform() === 'darwin';
 async function Run() {
     try {
         const text = await keychain_1.Keychain.GetCodeSigning();
@@ -4636,7 +4638,12 @@ async function Run() {
         core.setFailed(ex.message);
     }
 }
-Run();
+if (!IsMacOS) {
+    core.setFailed('Action requires macOS agent.');
+}
+else {
+    Run();
+}
 
 
 /***/ }),

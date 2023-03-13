@@ -4,12 +4,8 @@ on: push
 
 jobs:
   Build-And-Test:
-    runs-on: ${{ matrix.OS }}
+    runs-on: macos-latest
     timeout-minutes: 5
-    strategy:
-      fail-fast: false
-      matrix:
-        OS: [ ubuntu-latest, macos-latest, windows-latest ]
 
     steps:
       - uses: actions/checkout@v3

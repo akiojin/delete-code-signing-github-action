@@ -1,5 +1,8 @@
 import * as core from '@actions/core'
+import * as os from 'os'
 import { Keychain } from '@akiojin/keychain'
+
+const IsMacOS = os.platform() === 'darwin'
 
 async function Run()
 {
@@ -20,4 +23,8 @@ async function Run()
     }
 }
 
-Run()
+if (!IsMacOS) {
+	core.setFailed('Action requires macOS agent.')
+} else {
+    Run()
+}

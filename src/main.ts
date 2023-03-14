@@ -22,7 +22,7 @@ async function Run()
     }
 
     await Promise.all(promises.map(sign => {
-      core.info(`Delete: ${sign.Hash} ${sign.Target} ${sign.Type} ${sign.Publisher} (${sign.IssuerID})`)
+      core.info(`Delete: ${sign.Hash} ${sign.Target}: ${sign.Type} ${sign.Publisher} (${sign.IssuerID})`)
       return Keychain.DeleteCodeSigning(sign.Hash)
     }))
   } catch (ex: any) {

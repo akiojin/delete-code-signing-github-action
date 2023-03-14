@@ -6,31 +6,29 @@ const IsMacOS = os.platform() === 'darwin'
 
 async function Run()
 {
-    try {
-        const text = await Keychain.GetCodeSigning()
+  try {
+    const promises = await Keychain.GetCodeSigning()
 
-        // 2) DB1BD76E36121221A91216D4B69C767E998A4B69 "Apple Development: Akio Jinsenji (Y7S6CV6TA8)"
-        const regex = /\s*\d\)\s(?<Hash>\w*)\s"[Apple|iPhone]*\s(?<Type>.*):\s(?<Publisher>.*)\s\((?<IssuerID>\w*)\)"/g
-
-        const hashes = Array.from(text.matchAll(regex), match => match.groups!)
-            .filter(match => !!match['Type'] && match['Type'] === core.getInput('type'))
-            .filter(match => !!match['Publisher'] && match['Publisher'] === core.getInput('publisher'))
-            .map(match => {
-                console.log(match)
-                match['Hash']
-            })
-
-        const promises = hashes
-            .map(hash => Keychain.DeleteCodeSigning(hash!))
-
-        await Promise.all(promises)
-    } catch (ex: any) {
-        core.setFailed(ex.message)
+    if (!!core.getInput('type')) {
+      promises.filter(sign => sign.Type === core.getInput('type'))
     }
+
+    if (!!core.getInput('publisher')) {
+      promises.filter(sign => sign.Publisher === core.getInput('publisher'))
+    }
+
+    if (!!core.getInput('issuer-id')) {
+      promises.filter(sign => sign.IssuerID === core.getInput('issuer-id'))
+    }
+
+    await Promise.all(promises.map(sign => Keychain.DeleteCodeSigning(sign.Hash)))
+  } catch (ex: any) {
+    core.setFailed(ex.message)
+  }
 }
 
 if (!IsMacOS) {
 	core.setFailed('Action requires macOS agent.')
 } else {
-    Run()
+  Run()
 }

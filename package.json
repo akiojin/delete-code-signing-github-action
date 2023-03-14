@@ -19,7 +19,7 @@
   "homepage": "https://github.com/akiojin/delete-code-signing-github-action#readme",
   "dependencies": {
     "@actions/core": "^1.10.0",
-    "@akiojin/keychain": "^0.2.10"
+    "@akiojin/keychain": "^0.2.11"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",

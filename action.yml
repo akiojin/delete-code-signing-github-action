@@ -3,15 +3,19 @@ description: 'This action removes installed certificates.'
 inputs:
   type:
     description: >
-      Specify the type of certificate.
+      Specify the type of certificate to search for.
 
       Possible options are:
       Development, Distribution
-    required: true
+    required: false
   publisher:
     description: >
-      Specifies the publisher of the certificate.
-    required: true
+      Specify the name of the issuer if the issuer is the target of the search.
+    required: false
+  issuer-id:
+    description: >
+      Specify the issuer identifier when the search is for the issuer identifier.
+    required: false
 runs:
   using: 'node16'
   main: 'dist/index.js'

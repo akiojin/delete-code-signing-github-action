@@ -4644,7 +4644,10 @@ async function Run() {
         if (!!core.getInput('issuer-id')) {
             promises.filter(sign => sign.IssuerID === core.getInput('issuer-id'));
         }
-        await Promise.all(promises.map(sign => keychain_1.Keychain.DeleteCodeSigning(sign.Hash)));
+        await Promise.all(promises.map(sign => {
+            core.info(`Delete: ${sign.Hash} ${sign.Type} ${sign.Publisher} (${sign.IssuerID})`);
+            return keychain_1.Keychain.DeleteCodeSigning(sign.Hash);
+        }));
     }
     catch (ex) {
         core.setFailed(ex.message);

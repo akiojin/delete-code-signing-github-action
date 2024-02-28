@@ -17,7 +17,7 @@ inputs:
       Specify the issuer identifier when the search is for the issuer identifier.
     required: false
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'
 branding:
   icon: "box"

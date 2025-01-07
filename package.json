@@ -24,6 +24,6 @@
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^18.4.3",
-    "@types/node": "^20.2.4"
+    "@types/node": "^22.10.5"
   }
 }

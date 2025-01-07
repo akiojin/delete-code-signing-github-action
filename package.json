@@ -22,7 +22,7 @@
     "@akiojin/keychain": "^1.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.4.2",
+    "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^18.4.3",
     "@types/node": "^20.2.4"
   }

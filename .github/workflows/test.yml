@@ -1,0 +1,21 @@
+name: Test
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  Build-And-Test:
+    runs-on: macos-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
+        with:
+          type: Development
+          creator: Akio Jinsenji

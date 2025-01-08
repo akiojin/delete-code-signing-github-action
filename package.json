@@ -1,6 +1,6 @@
 {
   "name": "@akiojin/delete-code-signing-github-action",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This action removes installed certificates.",
   "main": "dist/index.js",
   "scripts": {

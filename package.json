@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/akiojin/delete-code-signing-github-action#readme",
   "dependencies": {
-    "@actions/core": "^1.11.1",
+    "@actions/core": "^2.0.0",
     "@akiojin/keychain": "^1.0.0"
   },
   "devDependencies": {
